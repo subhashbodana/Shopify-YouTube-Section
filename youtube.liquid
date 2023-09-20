@@ -1,0 +1,23 @@
+<div class="row">
+<div class="youtube-secton">
+<div class="youtube-slider" data-flickity='{ "freeScroll": true, "wrapAround": true }'>
+{% for block in section.blocks %}
+<div class="youtube-grid">
+  <div class="youtube-grid-inner">
+  {% assign videoId = block.settings.video_url | split: '?v=' %}
+  {% assign thumbnail_url = 'http://img.youtube.com/vi/' | append: videoId[1] | append: '/maxresdefault.jpg' %}  
+    <a class="tumbvideo" href="{{block.settings.video_url}}" target="_blank">
+    <img class="lazyload lazyload-fade" 
+      src="{{ thumbnail_url }}" 
+      width="925"
+      height="520"
+      loading="lazy" 
+      style="height: auto;" >
+    </a>
+    {% comment %}
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ videoId[1] }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    {% endcomment %}
+  </div>  
+</div>  
+{% endfor %}
+</div> 
